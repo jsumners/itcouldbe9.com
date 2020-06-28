@@ -1,6 +1,0 @@
-- name: Install packages:
-  xbps:
-    name:
-      - haproxy
-      - nginx
-      - vim-huge
