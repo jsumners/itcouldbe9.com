@@ -21,7 +21,7 @@ accept Ansible automation.
 1. Add baseline `/etc/rc.local`:
     ```
     ip addr add 45.63.16.142/8 brd 45.255.255.255 scope global dev eth0
-    ip addr add 2001:19f0:5:23de:5400:00ff:fe1e:54e2/64 scope global dev eth0
+    ip addr add 2001:19f0:5:23de:5400:ff:fe1e:54e2/64 scope global dev eth0
     ip link set up dev eth0
     ip route add default via 45.63.16.1 dev eth0
     ```
