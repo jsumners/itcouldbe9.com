@@ -1,0 +1,5 @@
+ethernet_dev: eth0
+ipv4_address: 45.63.16.142
+ipv4_broadcast: 45.255.255.255
+ipv4_gateway: 45.63.16.1
+ipv6_address: 2001:19f0:5:23de:5400:ff:fe1e:54e2

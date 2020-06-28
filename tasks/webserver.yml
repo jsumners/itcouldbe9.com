@@ -1,0 +1,46 @@
+- name: Install nginx
+  xbps:
+    name: nginx
+    state: present
+
+- name: Update nginx config
+  template:
+    src: "templates/nginx/{{ item }}"
+    dest: "/etc/nginx/{{ item }}"
+    owner: root
+    group: root
+    mode: '0655'
+  with_items:
+    - nginx.conf
+    - haplo-music.com.conf
+    - itcouldbe9.com.conf
+    - jrfom.com.conf
+    - sumners.info.conf
+  notify:
+    - restart nginx
+
+- name: Create web root
+  file:
+    path: /var/www
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Create web directories
+  file:
+    path: "/var/www/{{ item }}"
+    state: directory
+    owner: jsumners
+    group: jsumners
+    mode: '0755'
+  with_items:
+    - haplo-music.com
+    - itcouldbe9.com
+    - jrfom.com
+    - sumners.info
+
+- name: Enable nginx
+  runit:
+    name: nginx
+    enabled: yes

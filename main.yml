@@ -1,0 +1,63 @@
+---
+- name: itcouldbe9.com setup
+  hosts: all
+  become: yes
+  vars_files:
+    - vars/main.yml
+    - vars/secret.yml
+
+  handlers:
+    - name: restart sshd
+      runit:
+        name: sshd
+        state: restarted
+
+    - name: restart network
+      command: /etc/rc.local
+
+    - name: restart nftables
+      runit:
+        name: nftables
+        state: restarted
+
+    - name: restart nginx
+      runit:
+        name: nginx
+        state: restarted
+
+    - name: restart haproxy
+      runit:
+        name: haproxy
+        state: restarted
+
+  tasks:
+    - include_tasks: tasks/xbps.yml
+    - include_tasks: tasks/network.yml
+    - include_tasks: tasks/ssh.yml
+    - include_tasks: tasks/webserver.yml
+    - include_tasks: tasks/proxy.yml
+    - include_tasks: tasks/acme.yml
+
+    - name: Install packages
+      xbps:
+        name:
+          - curl
+          - lsof
+          - socklog
+          - socklog-void
+          - ssh-audit
+          - vim-huge
+          - zsh
+
+    - name: Enable socklog
+      runit:
+        name: socklog-unix
+        enabled: yes
+
+    - name: Set user shell
+      user:
+        name: "{{ item }}"
+        shell: /bin/zsh
+      with_items:
+        - root
+        - jsumners

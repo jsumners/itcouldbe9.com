@@ -1,0 +1,33 @@
+- name: Update resolv.conf
+  template:
+    src: templates/resolv.conf
+    dest: /etc/resolv.conf
+
+- name: Update rc.local
+  template:
+    src: templates/rc.local
+    dest: /etc/rc.local
+    owner: root
+    group: root
+    mode: '0755'
+  notify:
+    - restart network
+
+- name: Install IPv6 neighbor resolver
+  xbps:
+    name: ndppd
+
+- name: Update IPv6 neighbor config
+  template:
+    src: templates/ndppd.conf
+    dest: /etc/ndppd.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Enable IPv6 neighbor resolver
+  runit:
+    name: ndppd
+    enabled: yes
+
+- include_tasks: firewall.yml

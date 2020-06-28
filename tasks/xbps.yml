@@ -1,0 +1,15 @@
+- name: Add local conf dir
+  file:
+    path: /etc/xbps.d
+    state: directory
+    owner: root
+    group: root
+
+- name: Add mirror configuration
+  template:
+    src: templates/xbps.mirror
+    dest: /etc/xbps.d/00-repository-main.conf
+
+- name: Ensure repos up-to-date
+  xbps:
+    update_cache: yes

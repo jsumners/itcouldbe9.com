@@ -1,0 +1,32 @@
+- name: Install HAProxy
+  xbps:
+    name: haproxy
+
+- name: Create certs dir
+  file:
+    path: /etc/haproxy/certs
+    state: directory
+    owner: root
+    group: root
+    mode: '0700'
+
+- name: Add trash cert
+  template:
+    src: templates/cert/trash.pem
+    dest: /etc/haproxy/certs/00trash.pem
+
+- name: Update HAProxy config
+  template:
+    src: templates/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: '0644'
+    validate: haproxy -f %s -c -q
+  notify:
+    - restart haproxy
+
+- name: Enable HAProxy
+  runit:
+    name: haproxy
+    enabled: yes

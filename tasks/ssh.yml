@@ -1,0 +1,16 @@
+- name: Upload jsumners pub keys
+  authorized_key:
+    user: jsumners
+    key: "{{ item }}"
+  with_file:
+    - templates/jsumners_ssh_pubkeys
+
+- name: Update sshd_config
+  template:
+    src: templates/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - restart sshd

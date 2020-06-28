@@ -1,0 +1,9 @@
+#!/bin/sh
+
+ip addr add {{ ipv4_address }}/8 brd {{ ipv4_broadcast }} scope global dev {{ ethernet_dev }}
+ip addr add {{ ipv6_address }}/64 scope global dev {{ ethernet_dev }}
+ip link set up dev {{ ethernet_dev }}
+ip route add default via {{ ipv4_gateway }} dev {{ ethernet_dev }}
+
+# Local nets
+ip addr add 10.0.0.5/8 scope link dev {{ ethernet_dev }}
