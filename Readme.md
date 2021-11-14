@@ -5,7 +5,7 @@ server will be managing itcoulbe9.com.
 
 ## Setup
 
-1. Install Ansible: `pip install --user git+https://github.com/ansible/ansible.git@v2.9.10`
+1. Install Ansible: `pip install --user git+https://github.com/ansible/ansible.git@v2.12.0`
 1. Add vault password to `.vault-pass`
 1. Install `sshpass`: `sudo port install sshpass`
 
@@ -37,5 +37,5 @@ Finally, run `ansible-playbook -l production main.yml`.
 ## Post Setup
 
 1. Run `acmetool quickstart` to bootstap the tool. Choose "stateless" challenges.
-1. `acmetool want jrfom.com james.roomfullofmirrors.com sumners.info itcouldbe9.com haplo-music.com`
+1. `acmetool want jrfom.com roomfullofmirrors.com james.roomfullofmirrors.com sumners.info itcouldbe9.com haplo-music.com`
 1. `sv restart haproxy`
