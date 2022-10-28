@@ -1,0 +1,12 @@
+- name: Create certs dir
+  file:
+    path: /opt/certs
+    state: directory
+    owner: root
+    group: root
+    mode: '0700'
+
+- name: Add trash cert
+  template:
+    src: templates/cert/trash.pem
+    dest: /opt/certs/00trash.pem

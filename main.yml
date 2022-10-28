@@ -35,17 +35,21 @@
     - include_tasks: tasks/network.yml
     - include_tasks: tasks/ssh.yml
     - include_tasks: tasks/webserver.yml
+    - include_tasks: tasks/certs.yml
     - include_tasks: tasks/proxy.yml
-    - include_tasks: tasks/acme.yml
+    - include_tasks: tasks/lego.yml
 
     - name: Install packages
       xbps:
         name:
           - curl
           - lsof
+          - ripgrep
+          - socat
           - socklog
           - socklog-void
           - ssh-audit
+          - tmux
           - vim-huge
           - zsh
 
