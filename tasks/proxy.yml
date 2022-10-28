@@ -2,19 +2,6 @@
   xbps:
     name: haproxy
 
-- name: Create certs dir
-  file:
-    path: /etc/haproxy/certs
-    state: directory
-    owner: root
-    group: root
-    mode: '0700'
-
-- name: Add trash cert
-  template:
-    src: templates/cert/trash.pem
-    dest: /etc/haproxy/certs/00trash.pem
-
 - name: Update HAProxy config
   template:
     src: templates/haproxy.cfg

@@ -33,9 +33,3 @@ accept Ansible automation.
     ```
 
 Finally, run `ansible-playbook -l production main.yml`.
-
-## Post Setup
-
-1. Run `acmetool quickstart` to bootstap the tool. Choose "stateless" challenges.
-1. `acmetool want jrfom.com roomfullofmirrors.com james.roomfullofmirrors.com sumners.info itcouldbe9.com haplo-music.com`
-1. `sv restart haproxy`
