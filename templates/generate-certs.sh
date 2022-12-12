@@ -18,6 +18,7 @@ lego --eab \
   --accept-tos \
   --path /root/.lego \
   --server https://acme.zerossl.com/v2/DV90 \
+  --dns.resolvers 1.1.1.1 \
   run
 cat ${LEGO_CERTS}/{{ domain.cert_name }}.crt \
   ${LEGO_CERTS}/{{ domain.cert_name }}.key \
