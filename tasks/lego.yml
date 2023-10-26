@@ -2,7 +2,7 @@
   xbps:
     name: lego
 
-- name: Add ZeroSSL scripts
+- name: Add ACME scripts
   template:
     src: "templates/{{ item.src }}"
     dest: "/usr/local/bin/{{ item.dest }}"
