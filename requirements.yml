@@ -1,0 +1,8 @@
+---
+# https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html#install-multiple-collections-with-a-requirements-file
+
+collections:
+  # Includes the runit module
+  - community.general
+  # Includes the authorized_key module
+  - ansible.posix

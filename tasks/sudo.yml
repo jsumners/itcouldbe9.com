@@ -1,0 +1,14 @@
+- name: Add wheel sudo config
+  template:
+    src: templates/sudoers.wheel
+    dest: /etc/sudoers.d/wheel
+    owner: root
+    mode: '0440'
+
+- name: Add users to wheel group
+  user:
+    name: "{{ item }}"
+    append: true
+    groups: wheel
+  with_items:
+    - jsumners
