@@ -9,7 +9,7 @@
     owner: root
     group: root
     mode: '0644'
-    validate: haproxy -f %s -c -q
+    validate: haproxy -f %s -c
   notify:
     - restart haproxy
 

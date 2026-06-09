@@ -1,8 +1,12 @@
-repository=https://mirror.clarkson.edu/voidlinux/current
-repository=https://mirror.clarkson.edu/voidlinux/current/nonfree
+repository=https://mirrors.summithq.com/voidlinux/current
+repository=https://mirrors.summithq.com/voidlinux/current/nonfree
 
-repository=https://mirrors.servercentral.com/voidlinux/current
-repository=https://mirrors.servercentral.com/voidlinux/current/nonfree
+## Disappeared (stopped updating)
+#repository=https://mirror.clarkson.edu/voidlinux/current
+#repository=https://mirror.clarkson.edu/voidlinux/current/nonfree
+#repository=https://mirrors.servercentral.com/voidlinux/current
+#repository=https://mirrors.servercentral.com/voidlinux/current/nonfree
 
+## Original
 #repository=https://alpha.us.repo.voidlinux.org/current
 #repository=https://alpha.us.repo.voidlinux.org/current/nonfree
